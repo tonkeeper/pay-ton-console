@@ -1,0 +1,32 @@
+{
+  "name": "pay-ton-console",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.0.12",
+    "@solid-primitives/i18n": "^1.1.4",
+    "qrcode-generator": "^1.4.4",
+    "solid-floating-ui": "^0.2.1",
+    "solid-js": "^1.7.2",
+    "solid-styled-components": "^0.28.5",
+    "solid-transition-group": "^0.0.13",
+    "vite-plugin-solid": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "8.22.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-solid": "^0.7.3",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.1.4"
+  }
+}
