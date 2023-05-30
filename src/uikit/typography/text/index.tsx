@@ -1,13 +1,12 @@
 import { useI18n } from '@solid-primitives/i18n';
 import { Property } from 'csstype';
-import { Component, JSXElement } from 'solid-js';
+import { Component } from 'solid-js';
 import { useTheme } from 'solid-styled-components';
 import { TextStyled } from './style';
-import { Styleable, Translateable } from 'src/models';
+import { Styleable, Translateable, WithChildren } from 'src/models';
 import { Colors, TextStyle } from 'src/styles';
 
-export interface TextProps extends Styleable, Translateable {
-    children?: JSXElement;
+export interface TextProps extends Styleable, Translateable, WithChildren {
     textStyle?: TextStyle;
     color?: keyof Colors['text'];
 }

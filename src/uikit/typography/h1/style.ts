@@ -6,7 +6,7 @@ export const H1Styled = styled.h1<{ color: Property.Color }>`
     font-style: normal;
     font-weight: ${textStyles.h1.fontWeight};
     font-size: ${textStyles.h1.fontSize};
-    line-height: ${textStyles.h1.lineHeight}
+    line-height: ${textStyles.h1.lineHeight};
 
     text-align: center;
 

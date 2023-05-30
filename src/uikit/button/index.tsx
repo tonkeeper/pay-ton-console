@@ -7,7 +7,6 @@ import { BorderRadius } from 'src/styles';
 export interface ButtonProps extends Styleable {
     appearance?: 'primary' | 'secondary' | 'flat';
     borderRadius?: BorderRadius;
-    scale?: 's' | 'm';
     width?: Property.Width;
     children: JSXElement;
     onClick?: (e: MouseEvent & { currentTarget: HTMLButtonElement; target: Element }) => void;
@@ -29,7 +28,6 @@ export const Button: Component<ButtonProps> = props => {
             onMouseLeave={e => props.onMouseLeave?.(e)}
             ref={props.ref}
             disabled={props.disabled}
-            scale={props.scale || 'm'}
         >
             {props.children}
         </ButtonStyled>
