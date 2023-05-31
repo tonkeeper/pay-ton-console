@@ -9,6 +9,8 @@ import { Colors, TextStyle } from 'src/styles';
 export interface TextProps extends Styleable, Translateable, WithChildren {
     textStyle?: TextStyle;
     color?: keyof Colors['text'];
+
+    mono?: boolean;
 }
 
 export const Text: Component<TextProps> = props => {
@@ -20,7 +22,13 @@ export const Text: Component<TextProps> = props => {
     const textStyle = (): TextStyle => props.textStyle || 'body2';
 
     return (
-        <TextStyled textStyle={textStyle()} color={color()} class={props.class} ref={textRef}>
+        <TextStyled
+            textStyle={textStyle()}
+            color={color()}
+            mono={!!props.mono}
+            class={props.class}
+            ref={textRef}
+        >
             {props.translationKey
                 ? t(props.translationKey, props.translationValues, props.children?.toString())
                 : props.children}

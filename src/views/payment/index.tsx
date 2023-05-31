@@ -3,7 +3,8 @@ import {
     CopyAddressPaymentMethod,
     DefaultPaymentMethod,
     PaymentMethodsList,
-    QrPaymentMethod
+    QrPaymentMethod,
+    TonConnectPaymentMethod
 } from './payment-methods';
 
 type PaymentMethod = 'default' | 'list' | 'ton-connect' | 'qr' | 'copy-address';
@@ -18,6 +19,12 @@ export const Payment: Component = () => {
             </Match>
             <Match when={selectedPaymentMethod() === 'list'}>
                 <PaymentMethodsList onPaymentMethodSelected={setSelectedPaymentMethod} />
+            </Match>
+            <Match when={selectedPaymentMethod() === 'ton-connect'}>
+                <TonConnectPaymentMethod
+                    onOpenTonConnectMenu={() => setSelectedPaymentMethod('ton-connect')}
+                    onBackClick={() => setSelectedPaymentMethod('list')}
+                />
             </Match>
             <Match when={selectedPaymentMethod() === 'qr'}>
                 <QrPaymentMethod onBackClick={() => setSelectedPaymentMethod('list')} />

@@ -7,6 +7,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.0.12",
     "@solid-primitives/i18n": "^1.1.4",
+    "@tonconnect/ui": "^1.0.0-beta.5",
     "qrcode-generator": "^1.4.4",
     "solid-floating-ui": "^0.2.1",
     "solid-js": "^1.7.2",
