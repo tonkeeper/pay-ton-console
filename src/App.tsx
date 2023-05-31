@@ -1,7 +1,7 @@
 import type { Component } from 'solid-js';
 import { ThemeProvider } from 'solid-styled-components';
 import { i18nDictionary } from './i18n';
-import { themeState, locale } from 'src/state';
+import { themeState, locale, currentInvoice } from 'src/state';
 import { GlobalStyles } from 'src/styles';
 import './styles/style.d.ts';
 import { createI18nContext, I18nContext } from '@solid-primitives/i18n';
@@ -18,7 +18,7 @@ const App: Component = () => {
             <GlobalStyles />
             <ThemeProvider theme={themeState}>
                 <PageOverlay>
-                    <InvoiceCard />
+                    {currentInvoice() && <InvoiceCard invoice={currentInvoice()!} />}
                 </PageOverlay>
             </ThemeProvider>
         </I18nContext.Provider>

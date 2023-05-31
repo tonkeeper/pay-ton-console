@@ -61,3 +61,15 @@ export function getUserLocale(): string | undefined {
 
     return lang.split('-')[0];
 }
+
+export function addPath(base: string, path: string): string {
+    if (base.endsWith('/')) {
+        base = base.slice(0, -1);
+    }
+
+    if (path.startsWith('/')) {
+        path = path.slice(1);
+    }
+
+    return `${base}/${path}`;
+}

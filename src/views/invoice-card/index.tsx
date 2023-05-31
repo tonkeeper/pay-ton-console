@@ -1,11 +1,20 @@
-import { Component } from 'solid-js';
-import {InvoiceCardStyled, SupportButtonStyled} from './style';
+import { Component, Show } from 'solid-js';
+import { InvoiceCardStyled, SupportButtonStyled } from './style';
 import { A, Button, Divider, Flex, H4, QrCode, Text } from 'src/uikit';
 import { TelegramIcon } from 'src/uikit/icons';
+import { tonPrice, toUsd } from 'src/state';
+import { Invoice } from 'src/models/invoice';
+import { fromNano } from 'src/utils';
+import { generatePaymentLink } from 'src/utils/ton-payment';
 
-interface InvoiceCardProps {}
+interface InvoiceCardProps {
+    invoice: Invoice;
+}
 
 export const InvoiceCard: Component<InvoiceCardProps> = props => {
+    const paymentLink = (): string =>
+        generatePaymentLink(props.invoice.tonAmount, props.invoice.receiverAddress); // TODO адрес получателя
+
     return (
         <InvoiceCardStyled>
             <H4>Invoice</H4>
@@ -14,10 +23,15 @@ export const InvoiceCard: Component<InvoiceCardProps> = props => {
             </Text>
             <Divider class="mb-4" coverPadding="24px" />
             <Flex justifyContent="space-between" class="mb-3">
-                <Text>Subscription payment</Text>
+                <Show when={props.invoice.description}>
+                    <Text>{props.invoice.description}</Text>
+                </Show>
                 <div>
-                    <H4 class="mb-0">120 TON</H4>
-                    <Text color="secondary">$191.70</Text>
+                    <H4 class="mb-0">{fromNano(props.invoice.tonAmount)} TON</H4>
+
+                    <Text color="secondary">
+                        {tonPrice() ? '$' + toUsd(fromNano(props.invoice.tonAmount)) : ''}
+                    </Text>
                 </div>
             </Flex>
             <Divider class="mb-4" coverPadding="24px" />
@@ -25,11 +39,11 @@ export const InvoiceCard: Component<InvoiceCardProps> = props => {
             <A href="" target="_blank" class="mb-3 block">
                 How to pay
             </A>
-            <QrCode
-                src="https://www.figma.com/file/IIxhmuoLr2nyTgmn56N9bz/TON-Console?type=design&node-id=948-61794&t=vzfw2YcZmHjEOYBQ-0"
-                class="mb-3"
-            />
-            <Button class="mb-3">Pay</Button>
+            <QrCode src={paymentLink()} class="mb-3" />
+
+            <A href={paymentLink()}>
+                <Button class="mb-3">Pay</Button>
+            </A>
             <Button class="mb-4" appearance="secondary">
                 Show all payment methods
             </Button>
