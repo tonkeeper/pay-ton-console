@@ -17,11 +17,9 @@ export const AStyled = styled.a<{ textStyle: TextStyle; color: Property.Color; a
 
     &:hover {
         text-decoration: ${props => (props.asButton ? 'unset' : 'underline')};
-        transform: ${props => (props.asButton ? 'scale(1.03)' : 'unset')};
     }
 
     &:active {
         text-decoration: ${props => (props.asButton ? 'unset' : 'underline')};
-        transform: ${props => (props.asButton ? 'scale(0.97)' : 'unset')};
     }
 `;

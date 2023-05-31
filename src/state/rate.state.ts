@@ -1,5 +1,6 @@
 import { createResource } from 'solid-js';
-import { toPrecision, withTonApiBaseUrl } from 'src/utils';
+import { toPrecision } from 'src/utils';
+import { withTonApiBaseUrl } from 'src/envinroment';
 
 export const [tonPrice] = createResource<string>(async () => {
     const result = await (

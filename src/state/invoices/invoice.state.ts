@@ -1,7 +1,8 @@
-import { getWindow, withBaseUrl } from 'src/utils';
+import { getWindow } from 'src/utils';
 import { createResource } from 'solid-js';
 import { Invoice, InvoiceCommon, InvoiceStatus } from 'src/models/invoice';
 import { DTOInvoice, DTOInvoicesInvoiceStatus } from 'src/state/invoices/dto';
+import { withBaseUrl } from 'src/envinroment';
 
 function getCurrentInvoiceId(): string | undefined {
     const window = getWindow();
@@ -42,7 +43,8 @@ function mapInvoiceDTOToInvoice(invoiceDTO: DTOInvoice): Invoice {
         id: invoiceDTO.id,
         validUntil: new Date(creationDate.getTime() + invoiceDTO.life_time * 1000),
         description: invoiceDTO.description,
-        receiverAddress: invoiceDTO.recipient_address
+        receiverAddress: invoiceDTO.recipient_address,
+        sendToAddress: invoiceDTO.recipient_address // TODO
     };
 
     const status = mapInvoiceDTOStatusToInvoiceStatus[invoiceDTO.status];

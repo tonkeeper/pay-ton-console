@@ -1,4 +1,4 @@
-import { addPath } from './web-api';
+import { addPath } from 'src/utils';
 
 export const baseUrl = import.meta.env.VITE_BASE_URL;
 

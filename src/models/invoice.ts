@@ -16,6 +16,7 @@ export interface InvoiceCommon {
     description: string;
     creationDate: Date;
     receiverAddress: string;
+    sendToAddress: string;
 }
 
 export interface InvoiceSuccessful extends InvoiceCommon {

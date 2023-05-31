@@ -17,9 +17,7 @@ const App: Component = () => {
         <I18nContext.Provider value={translations}>
             <GlobalStyles />
             <ThemeProvider theme={themeState}>
-                <PageOverlay>
-                    {currentInvoice() && <InvoiceCard invoice={currentInvoice()!} />}
-                </PageOverlay>
+                <PageOverlay>{currentInvoice() && <InvoiceCard />}</PageOverlay>
             </ThemeProvider>
         </I18nContext.Provider>
     );
