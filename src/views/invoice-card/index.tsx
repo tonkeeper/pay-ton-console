@@ -1,16 +1,37 @@
 import { Component, Show } from 'solid-js';
 import { InvoiceCardStyled, SupportButtonStyled } from './style';
-import { Button, Divider, Flex, H4, Text } from 'src/uikit';
+import { Button, Divider, FlashIcon, Flex, H4, Text } from 'src/uikit';
 import { TelegramIcon } from 'src/uikit/icons';
 import { currentInvoice, tonPrice, toUsd } from 'src/state';
-import { fromNano } from 'src/utils';
+import { fromNano, secondsToMMSS } from 'src/utils';
 import { Payment } from '../payment';
 import { LINKS } from 'src/constants';
+import { createCountdown } from 'src/hooks';
 
 export const InvoiceCard: Component = () => {
+    const initialSecondsLeft = (): number => {
+        const value = Math.floor((currentInvoice()!.validUntil.getTime() - Date.now()) / 1000);
+        if (value < 0) {
+            return 0;
+        }
+
+        return value;
+    };
+
+    const secondsLeft = createCountdown(initialSecondsLeft());
     return (
         <InvoiceCardStyled>
-            <H4>Invoice</H4>
+            <Flex justifyContent="space-between" alignItems="center">
+                <H4>Invoice</H4>
+                <Show when={secondsLeft() > 0 && secondsLeft() < 20 * 60}>
+                    <Flex gap="6px" alignItems="center">
+                        <FlashIcon />
+                        <Text color="secondary" mono>
+                            {secondsToMMSS(secondsLeft())}
+                        </Text>
+                    </Flex>
+                </Show>
+            </Flex>
             <Text class="mb-3" color="secondary">
                 Netflix
             </Text>

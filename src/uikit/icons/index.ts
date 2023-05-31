@@ -5,3 +5,4 @@ export { ArrowIcon } from './arrow-icon';
 export { TonIcon } from './ton-icon';
 export { QRIcon } from './qr-icon';
 export { CreditCardIcon } from './credit-card-icon';
+export { FlashIcon } from './flash-icon';
