@@ -1,12 +1,12 @@
 import { Component, Show } from 'solid-js';
-import { InvoiceCardStyled, SupportButtonStyled } from './style';
+import { DescriptionTextStyled, InvoiceCardStyled, PriceContainerStyled, SupportButtonStyled } from "./style";
 import { Button, Divider, FlashIcon, Flex, H4, Text } from 'src/uikit';
 import { TelegramIcon } from 'src/uikit/icons';
 import { currentInvoice, tonPrice, toUsd } from 'src/state';
 import { fromNano, secondsToMMSS } from 'src/utils';
-import { Payment } from '../payment';
 import { LINKS } from 'src/constants';
 import { createCountdown } from 'src/hooks';
+import { InvoiceBody } from '../invoice-body';
 
 export const InvoiceCard: Component = () => {
     const initialSecondsLeft = (): number => {
@@ -36,20 +36,20 @@ export const InvoiceCard: Component = () => {
                 Netflix
             </Text>
             <Divider class="mb-4" coverPadding="24px" />
-            <Flex justifyContent="space-between" class="mb-3">
+            <Flex justifyContent="space-between" class="mb-3" gap="10px">
                 <Show when={currentInvoice()!.description}>
-                    <Text>{currentInvoice()!.description}</Text>
+                    <DescriptionTextStyled>{currentInvoice()!.description}</DescriptionTextStyled>
                 </Show>
-                <div>
+                <PriceContainerStyled>
                     <H4 class="mb-0">{fromNano(currentInvoice()!.tonAmount)} TON</H4>
 
                     <Text color="secondary">
                         {tonPrice() ? '$' + toUsd(fromNano(currentInvoice()!.tonAmount)) : ''}
                     </Text>
-                </div>
+                </PriceContainerStyled>
             </Flex>
             <Divider class="mb-4" coverPadding="24px" />
-            <Payment />
+            <InvoiceBody />
             <Divider coverPadding="24px" class="mb-4" />
             <SupportButtonStyled asButton={true} href={LINKS.SUPPORT} target="_blank">
                 <Button appearance="flat">

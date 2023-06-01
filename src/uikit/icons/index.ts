@@ -6,3 +6,4 @@ export { TonIcon } from './ton-icon';
 export { QRIcon } from './qr-icon';
 export { CreditCardIcon } from './credit-card-icon';
 export { FlashIcon } from './flash-icon';
+export { SuccessIcon } from './success-icon';

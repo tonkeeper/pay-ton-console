@@ -6,7 +6,8 @@ import { GlobalStyles } from 'src/styles';
 import './styles/style.d.ts';
 import { createI18nContext, I18nContext } from '@solid-primitives/i18n';
 import { fixMobileSafariActiveTransition } from 'src/utils';
-import { InvoiceCard, PageOverlay } from 'src/views';
+import { InvoiceCard, PageOverlay, InvoiceNotFound } from 'src/views';
+import { Match, Switch } from 'solid-js';
 
 const App: Component = () => {
     const translations = createI18nContext(i18nDictionary, locale());
@@ -17,7 +18,16 @@ const App: Component = () => {
         <I18nContext.Provider value={translations}>
             <GlobalStyles />
             <ThemeProvider theme={themeState}>
-                <PageOverlay>{currentInvoice() && <InvoiceCard />}</PageOverlay>
+                <PageOverlay>
+                    <Switch>
+                        <Match when={!currentInvoice()}>
+                            <InvoiceNotFound />
+                        </Match>
+                        <Match when={currentInvoice()}>
+                            <InvoiceCard />
+                        </Match>
+                    </Switch>
+                </PageOverlay>
             </ThemeProvider>
         </I18nContext.Provider>
     );

@@ -1,8 +1,8 @@
 import { styled } from 'solid-styled-components';
 import { borderRadius } from 'src/styles';
-import { A, Text } from 'src/uikit';
+import { A } from 'src/uikit';
 
-export const InvoiceCardStyled = styled.div`
+export const InvoiceNotFoundStyled = styled.div`
     background-color: ${props => props.theme!.colors.background.content};
     border-radius: ${borderRadius.lg};
     width: 420px;
@@ -15,10 +15,7 @@ export const SupportButtonStyled = styled(A)`
     width: fit-content;
 `;
 
-export const DescriptionTextStyled = styled(Text)`
-    word-break: break-all;
-`;
-
-export const PriceContainerStyled = styled.div`
-    flex-shrink: 0;
+export const TextContainerStyled = styled.div`
+    text-align: center;
+    margin-bottom: 20px;
 `;
