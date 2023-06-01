@@ -7,11 +7,17 @@ export interface OptionButtonProps extends Styleable {
     children: JSXElement;
     leftIcon: JSXElement | string;
     onClick?: (e: MouseEvent & { currentTarget: HTMLButtonElement; target: Element }) => void;
+
+    coverPadding?: number;
 }
 
 export const OptionButton: Component<OptionButtonProps> = props => {
     return (
-        <OptionButtonStyled class={props.class} onClick={e => props.onClick?.(e)}>
+        <OptionButtonStyled
+            coverPadding={props.coverPadding}
+            class={props.class}
+            onClick={e => props.onClick?.(e)}
+        >
             {typeof props.leftIcon === 'string' ? (
                 <ImageStyled src={props.leftIcon} width="24px" height="24px" />
             ) : (

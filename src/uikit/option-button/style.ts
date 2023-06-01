@@ -1,9 +1,14 @@
 import { styled } from 'solid-styled-components';
 import { textStyles } from 'src/styles';
+import { toPx } from 'src/utils';
 
-export const OptionButtonStyled = styled.button`
+export const OptionButtonStyled = styled.button<{ coverPadding?: number }>`
     height: 48px;
-    width: 100%;
+    width: ${props =>
+        props.coverPadding ? `calc(100% + ${toPx(props.coverPadding * 2)})` : '100%'};
+    margin: ${props => (props.coverPadding ? `0 -${toPx(props.coverPadding)}` : 'unset')};
+    padding: ${props => (props.coverPadding ? `0 ${toPx(props.coverPadding)}` : 'unset')};
+
     display: flex;
     gap: 12px;
     align-items: center;
@@ -17,11 +22,14 @@ export const OptionButtonStyled = styled.button`
     font-weight: ${textStyles.label1.fontWeight};
     line-height: ${textStyles.label1.lineHeight};
 
+    transition: background-color 0.2s ease-in-out;
+
     .option-btn-arrow {
         transition: transform 0.2s ease-in-out;
     }
 
     &:hover {
+        background-color: ${props => props.theme!.colors.background.contentTint};
         .option-btn-arrow {
             transform: translateX(4px);
         }

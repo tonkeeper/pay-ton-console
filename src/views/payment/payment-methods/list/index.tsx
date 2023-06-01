@@ -1,5 +1,4 @@
 import { Component, Show } from 'solid-js';
-import { PaymentMethodsListStyled } from './style';
 import { A, CreditCardIcon, Flex, OptionButton, QRIcon, Text, TonIcon } from 'src/uikit';
 import { generateTonhubPaymentLink, generateTonkeeperPaymentLink } from 'src/utils/ton-payment';
 import { currentInvoice, tonConnectUI, wallet } from 'src/state';
@@ -16,16 +15,17 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
     const tonhubLink = (): string =>
         generateTonhubPaymentLink(currentInvoice()!.sendToAddress, currentInvoice()!.tonAmount);
     return (
-        <PaymentMethodsListStyled>
+        <>
             <Text textStyle="label1" class="mb-3">
                 Payment methods
             </Text>
-            <ul>
+            <ul class="mb-2">
                 <Show when={wallet()}>
                     <li>
                         <OptionButton
                             leftIcon={<TonIcon />}
                             onClick={() => props.onPaymentMethodSelected('ton-connect')}
+                            coverPadding={24}
                         >
                             <Flex>
                                 TonConnect ·&nbsp;
@@ -38,16 +38,22 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
                 </Show>
                 <li>
                     <A href={tonkeeperLink()} target="_blank" asButton={true}>
-                        <OptionButton leftIcon="/images/tonkeeper.png">Tonkeeper</OptionButton>
+                        <OptionButton leftIcon="/images/tonkeeper.png" coverPadding={24}>
+                            Tonkeeper
+                        </OptionButton>
                     </A>
                 </li>
                 <li>
                     <A href={tonhubLink()} target="_blank" asButton={true}>
-                        <OptionButton leftIcon="/images/tonhub.png">Tonhub</OptionButton>
+                        <OptionButton leftIcon="/images/tonhub.png" coverPadding={24}>
+                            Tonhub
+                        </OptionButton>
                     </A>
                 </li>
                 <li>
-                    <OptionButton leftIcon="/images/at-wallet.png">@wallet</OptionButton>
+                    <OptionButton leftIcon="/images/at-wallet.png" coverPadding={24}>
+                        @wallet
+                    </OptionButton>
                 </li>
                 <Show when={!wallet()}>
                     <li>
@@ -58,6 +64,7 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
                                     .connectWallet()
                                     .then(() => props.onPaymentMethodSelected('ton-connect'))
                             }
+                            coverPadding={24}
                         >
                             TonConnect
                         </OptionButton>
@@ -67,6 +74,7 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
                     <OptionButton
                         onClick={() => props.onPaymentMethodSelected('qr')}
                         leftIcon={<QRIcon />}
+                        coverPadding={24}
                     >
                         Scan QR
                     </OptionButton>
@@ -75,11 +83,12 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
                     <OptionButton
                         onClick={() => props.onPaymentMethodSelected('copy-address')}
                         leftIcon={<CreditCardIcon />}
+                        coverPadding={24}
                     >
                         Show payment credentials
                     </OptionButton>
                 </li>
             </ul>
-        </PaymentMethodsListStyled>
+        </>
     );
 };
