@@ -1,7 +1,8 @@
 import { Component } from 'solid-js';
 import { A, ArrowIcon, Button, CopyPad, Flex, Text } from 'src/uikit';
 import { currentInvoice } from 'src/state';
-import { LINKS } from "src/constants";
+import { LINKS } from 'src/constants';
+import { fromNano } from 'src/utils';
 
 interface CopyAddressPaymentMethodProps {
     onBackClick: () => void;
@@ -22,7 +23,8 @@ export const CopyAddressPaymentMethod: Component<CopyAddressPaymentMethodProps> 
                 </Flex>
             </Button>
             <Text color="secondary" class="mb-4">
-                To perform payment you need to send 120 TON on address below.{' '}
+                To perform payment you need to send {fromNano(currentInvoice()!.tonAmount)} TON
+                on address below.{' '}
                 <A href={LINKS.PAY_VIA_ADDRESS_DOCS} target="_blank">
                     How to pay
                 </A>

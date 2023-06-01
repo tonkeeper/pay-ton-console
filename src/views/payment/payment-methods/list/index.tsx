@@ -4,6 +4,7 @@ import { generateTonhubPaymentLink, generateTonkeeperPaymentLink } from 'src/uti
 import { currentInvoice, tonConnectUI, wallet } from 'src/state';
 import { sliceAddress } from 'src/utils';
 import { toUserFriendlyAddress } from '@tonconnect/ui';
+import { isDevice } from 'src/styles';
 
 interface PaymentMethodsListProps {
     onPaymentMethodSelected: (method: 'ton-connect' | 'qr' | 'copy-address') => void;
@@ -14,6 +15,14 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
         generateTonkeeperPaymentLink(currentInvoice()!.sendToAddress, currentInvoice()!.tonAmount);
     const tonhubLink = (): string =>
         generateTonhubPaymentLink(currentInvoice()!.sendToAddress, currentInvoice()!.tonAmount);
+
+    const sliceOptions = isDevice('mobile')
+        ? {
+              startSymbols: 4,
+              endSymbols: 4
+          }
+        : undefined;
+
     return (
         <>
             <Text textStyle="label1" class="mb-3">
@@ -27,10 +36,13 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
                             onClick={() => props.onPaymentMethodSelected('ton-connect')}
                             coverPadding={24}
                         >
-                            <Flex>
+                            <Flex flexWrap="wrap">
                                 TonConnect ·&nbsp;
                                 <Text color="secondary" mono textStyle="body1">
-                                    {sliceAddress(toUserFriendlyAddress(wallet()!.account.address))}
+                                    {sliceAddress(
+                                        toUserFriendlyAddress(wallet()!.account.address),
+                                        sliceOptions
+                                    )}
                                 </Text>
                             </Flex>
                         </OptionButton>

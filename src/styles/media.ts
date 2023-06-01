@@ -1,10 +1,9 @@
 import { getWindow } from 'src/utils';
 
-export type Device = 'mobile' | 'tablet' | 'desktop';
+export type Device = 'mobile' | 'desktop';
 
 export const maxWidth = {
-    mobile: 440,
-    tablet: 1020
+    mobile: 440
 };
 
 export function isDevice(device: keyof typeof maxWidth | 'desktop'): boolean {
@@ -17,8 +16,6 @@ export function isDevice(device: keyof typeof maxWidth | 'desktop'): boolean {
 
     switch (device) {
         case 'desktop':
-            return width > maxWidth.tablet;
-        case 'tablet':
             return width > maxWidth.mobile;
         default:
         case 'mobile':
@@ -30,11 +27,9 @@ export function media(device: Device): string {
     switch (device) {
         case 'mobile':
             return `@media (max-width: ${maxWidth.mobile}px)`;
-        case 'tablet':
-            return `@media (max-width: ${maxWidth.tablet}px) (min-width: ${maxWidth.mobile}px)`;
         default:
         case 'desktop':
-            return `@media (min-width: ${maxWidth.tablet}px)`;
+            return `@media (min-width: ${maxWidth.mobile}px)`;
     }
 }
 

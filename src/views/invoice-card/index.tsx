@@ -1,12 +1,23 @@
 import { Component, Show } from 'solid-js';
-import { DescriptionTextStyled, InvoiceCardStyled, PriceContainerStyled, SupportButtonStyled } from "./style";
-import { Button, Divider, FlashIcon, Flex, H4, Text } from 'src/uikit';
+import {
+    AmountAndDescriptionContainerStyled,
+    AppNameStyled,
+    DescriptionTextStyled,
+    HeaderStyled,
+    InvoiceCardStyled,
+    PriceContainerStyled,
+    SupportButtonStyled,
+    TimerContainerStyled
+} from './style';
+import { Button, Divider, FlashIcon, Flex, H3, H4, Text } from 'src/uikit';
 import { TelegramIcon } from 'src/uikit/icons';
 import { currentInvoice, tonPrice, toUsd } from 'src/state';
 import { fromNano, secondsToMMSS } from 'src/utils';
 import { LINKS } from 'src/constants';
 import { createCountdown } from 'src/hooks';
 import { InvoiceBody } from '../invoice-body';
+import { isDevice } from 'src/styles';
+import { Dynamic } from 'solid-js/web';
 
 export const InvoiceCard: Component = () => {
     const initialSecondsLeft = (): number => {
@@ -17,37 +28,39 @@ export const InvoiceCard: Component = () => {
 
         return value;
     };
-
     const secondsLeft = createCountdown(initialSecondsLeft());
+
+    const amountHeader = isDevice('mobile') ? H3 : H4;
+
     return (
         <InvoiceCardStyled>
-            <Flex justifyContent="space-between" alignItems="center">
-                <H4>Invoice</H4>
+            <HeaderStyled>
+                <H4 class="mb-0">Invoice</H4>
                 <Show when={secondsLeft() > 0 && secondsLeft() < 20 * 60}>
-                    <Flex gap="6px" alignItems="center">
+                    <TimerContainerStyled>
                         <FlashIcon />
                         <Text color="secondary" mono>
                             {secondsToMMSS(secondsLeft())}
                         </Text>
-                    </Flex>
+                    </TimerContainerStyled>
                 </Show>
-            </Flex>
-            <Text class="mb-3" color="secondary">
-                Netflix
-            </Text>
+            </HeaderStyled>
+            <AppNameStyled color="secondary">Netflix</AppNameStyled>
             <Divider class="mb-4" coverPadding="24px" />
-            <Flex justifyContent="space-between" class="mb-3" gap="10px">
+            <AmountAndDescriptionContainerStyled>
                 <Show when={currentInvoice()!.description}>
                     <DescriptionTextStyled>{currentInvoice()!.description}</DescriptionTextStyled>
                 </Show>
                 <PriceContainerStyled>
-                    <H4 class="mb-0">{fromNano(currentInvoice()!.tonAmount)} TON</H4>
+                    <Dynamic component={amountHeader} class="mb-0">
+                        {fromNano(currentInvoice()!.tonAmount)} TON
+                    </Dynamic>
 
                     <Text color="secondary">
                         {tonPrice() ? '$' + toUsd(fromNano(currentInvoice()!.tonAmount)) : ''}
                     </Text>
                 </PriceContainerStyled>
-            </Flex>
+            </AmountAndDescriptionContainerStyled>
             <Divider class="mb-4" coverPadding="24px" />
             <InvoiceBody />
             <Divider coverPadding="24px" class="mb-4" />

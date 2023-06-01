@@ -5,7 +5,7 @@ import { A } from 'src/uikit';
 export const InvoiceNotFoundStyled = styled.div`
     background-color: ${props => props.theme!.colors.background.content};
     border-radius: ${borderRadius.lg};
-    width: 420px;
+    max-width: 420px;
     padding: 16px 24px;
 `;
 
