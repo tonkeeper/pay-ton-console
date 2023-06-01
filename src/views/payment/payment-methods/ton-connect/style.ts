@@ -10,7 +10,7 @@ export const WalletImageStyled = styled.img`
 
 export const WalletInfoStyled = styled(Flex)`
     gap: 12px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 `;
 
 export const ChangeWalletButtonStyled = styled(Button)`

@@ -1,6 +1,6 @@
 import { styled } from 'solid-styled-components';
 import { borderRadius } from 'src/styles';
-import { Button } from 'src/uikit';
+import { CopyButton } from '../copy-button';
 
 export const QrCodeStyled = styled.div`
     position: relative;
@@ -12,7 +12,7 @@ export const QrCodeStyled = styled.div`
     border-radius: ${borderRadius.md};
 `;
 
-export const CopyButtonStyled = styled(Button)`
+export const CopyButtonStyled = styled(CopyButton)`
     position: absolute;
     top: 10px;
     right: 10px;

@@ -8,3 +8,4 @@ export { QrCode } from './qr-code';
 export { OptionButton } from './option-button';
 export { CopyPad } from './copy-pad';
 export { Callout } from './callout';
+export { CopyButton } from './copy-button';

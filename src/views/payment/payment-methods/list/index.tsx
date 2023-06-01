@@ -1,13 +1,14 @@
 import { Component, Show } from 'solid-js';
-import { A, CreditCardIcon, Flex, OptionButton, QRIcon, Text, TonIcon } from 'src/uikit';
+import { A, ArrowIcon, Button, CopyPad, Flex, OptionButton, Text, TonIcon } from 'src/uikit';
 import { generateTonhubPaymentLink, generateTonkeeperPaymentLink } from 'src/utils/ton-payment';
 import { currentInvoice, tonConnectUI, wallet } from 'src/state';
-import { sliceAddress } from 'src/utils';
+import { fromNano, sliceAddress } from 'src/utils';
 import { toUserFriendlyAddress } from '@tonconnect/ui';
 import { isDevice } from 'src/styles';
+import { LINKS } from 'src/constants';
 
 interface PaymentMethodsListProps {
-    onPaymentMethodSelected: (method: 'ton-connect' | 'qr' | 'copy-address') => void;
+    onPaymentMethodSelected: (method: 'ton-connect' | 'default') => void;
 }
 
 export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
@@ -25,9 +26,25 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
 
     return (
         <>
-            <Text textStyle="label1" class="mb-3">
-                Payment methods
+            <Button
+                width="fit-content"
+                appearance="flat"
+                class="mb-3"
+                onClick={() => props.onPaymentMethodSelected('default')}
+            >
+                <Flex alignItems="center" gap="6px">
+                    <ArrowIcon direction="left" color="primary" />
+                    Back
+                </Flex>
+            </Button>
+            <Text color="secondary" class="mb-2">
+                To perform payment you need to send {fromNano(currentInvoice()!.tonAmount)} TON
+                on&nbsp;address bellow.&nbsp;
+                <A href={LINKS.PAY_VIA_ADDRESS_DOCS} target="_blank">
+                    How to pay
+                </A>
             </Text>
+            <CopyPad text={currentInvoice()!.sendToAddress} class="mb-3" />
             <ul class="mb-2">
                 <Show when={wallet()}>
                     <li>
@@ -82,24 +99,6 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
                         </OptionButton>
                     </li>
                 </Show>
-                <li>
-                    <OptionButton
-                        onClick={() => props.onPaymentMethodSelected('qr')}
-                        leftIcon={<QRIcon />}
-                        coverPadding={24}
-                    >
-                        Scan QR
-                    </OptionButton>
-                </li>
-                <li>
-                    <OptionButton
-                        onClick={() => props.onPaymentMethodSelected('copy-address')}
-                        leftIcon={<CreditCardIcon />}
-                        coverPadding={24}
-                    >
-                        Show payment credentials
-                    </OptionButton>
-                </li>
             </ul>
         </>
     );

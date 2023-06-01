@@ -1,13 +1,11 @@
 import { Component, createSignal, Match, Switch } from 'solid-js';
 import {
-    CopyAddressPaymentMethod,
     DefaultPaymentMethod,
     PaymentMethodsList,
-    QrPaymentMethod,
     TonConnectPaymentMethod
 } from './payment-methods';
 
-type PaymentMethod = 'default' | 'list' | 'ton-connect' | 'qr' | 'copy-address';
+type PaymentMethod = 'default' | 'list' | 'ton-connect';
 
 export const Payment: Component = () => {
     const [selectedPaymentMethod, setSelectedPaymentMethod] =
@@ -25,12 +23,6 @@ export const Payment: Component = () => {
                     onOpenTonConnectMenu={() => setSelectedPaymentMethod('ton-connect')}
                     onBackClick={() => setSelectedPaymentMethod('list')}
                 />
-            </Match>
-            <Match when={selectedPaymentMethod() === 'qr'}>
-                <QrPaymentMethod onBackClick={() => setSelectedPaymentMethod('list')} />
-            </Match>
-            <Match when={selectedPaymentMethod() === 'copy-address'}>
-                <CopyAddressPaymentMethod onBackClick={() => setSelectedPaymentMethod('list')} />
             </Match>
         </Switch>
     );

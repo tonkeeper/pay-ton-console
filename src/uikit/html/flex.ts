@@ -12,5 +12,5 @@ export const Flex = styled.div<{
     justify-content: ${props => props.justifyContent || 'unset'};
     flex-direction: ${props => props.flexDirection || 'row'};
     flex-wrap: ${props => props.flexWrap || 'unset'};
-    gap: ${props => props.gap || 'row'};
+    gap: ${props => props.gap || 'unset'};
 `;

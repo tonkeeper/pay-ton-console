@@ -1,6 +1,7 @@
 import { Component } from 'solid-js';
+import { Styleable } from 'src/models';
 
-export const CopyIcon: Component = () => {
+export const CopyIcon: Component<Styleable> = props => {
     return (
         <svg
             width="20"
@@ -8,6 +9,7 @@ export const CopyIcon: Component = () => {
             viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            class={props.class}
         >
             <path
                 fill-rule="evenodd"

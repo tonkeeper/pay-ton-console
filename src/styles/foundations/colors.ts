@@ -3,7 +3,8 @@ export const colors = {
         primary: '#000000',
         secondary: '#7E868F',
         tertiary: '#A0A6AD',
-        accent: '#2E84E5'
+        accent: '#2E84E5',
+        contrast: '#FFFFFF'
     },
     background: {
         page: '#F1F3F5',

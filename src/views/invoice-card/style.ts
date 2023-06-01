@@ -6,6 +6,7 @@ export const InvoiceCardStyled = styled.div`
     background-color: ${props => props.theme!.colors.background.content};
     border-radius: ${borderRadius.lg};
     max-width: 420px;
+    width: 100%;
     padding: 16px 24px;
 `;
 

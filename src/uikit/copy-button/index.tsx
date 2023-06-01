@@ -1,20 +1,24 @@
 import { Component, Show } from 'solid-js';
-import { CopiedBadgeStyled, CopyPadStyled } from './style';
 import { CopyIcon } from 'src/uikit';
-import { Styleable } from 'src/models';
-import { createCopyToClipboard } from 'src/hooks';
+import { CopiedBadgeStyled, CopyButtonStyled } from './style';
 import { Transition } from 'solid-transition-group';
+import { createCopyToClipboard } from 'src/hooks';
+import { Styleable } from 'src/models';
 
-export interface CopyPadProps extends Styleable {
+interface CopyButtonProps extends Styleable {
     text: string;
 }
 
-export const CopyPad: Component<CopyPadProps> = props => {
+export const CopyButton: Component<CopyButtonProps> = props => {
     const [copied, onCopy] = createCopyToClipboard(() => props.text);
 
     return (
-        <CopyPadStyled class={props.class} onClick={onCopy}>
-            <span>{props.text}</span>
+        <CopyButtonStyled
+            appearance="flat"
+            width="fit-content"
+            onClick={onCopy}
+            class={props.class}
+        >
             <CopyIcon />
             <Transition
                 onBeforeEnter={el => {
@@ -45,6 +49,6 @@ export const CopyPad: Component<CopyPadProps> = props => {
                     <CopiedBadgeStyled>Copied!</CopiedBadgeStyled>
                 </Show>
             </Transition>
-        </CopyPadStyled>
+        </CopyButtonStyled>
     );
 };

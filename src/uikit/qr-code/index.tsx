@@ -2,8 +2,6 @@ import qrcode from 'qrcode-generator';
 import { Component, createEffect, Show } from 'solid-js';
 import { CopyButtonStyled, QrCodeStyled } from './style';
 import { Styleable } from 'src/models';
-import { CopyIcon } from 'src/uikit';
-import { copyToClipboard } from 'src/utils';
 
 interface QrCodeProps extends Styleable {
     src: string;
@@ -26,9 +24,7 @@ export const QrCode: Component<QrCodeProps> = props => {
     return (
         <QrCodeStyled class={props.class}>
             <Show when={props.showCopyButton !== false}>
-                <CopyButtonStyled appearance="flat" onClick={() => copyToClipboard(props.src)}>
-                    <CopyIcon />
-                </CopyButtonStyled>
+                <CopyButtonStyled text={props.src} />
             </Show>
             <div ref={qrCodeCanvasRef} />
         </QrCodeStyled>
