@@ -1,5 +1,15 @@
 import { Component, Show } from 'solid-js';
-import { A, ArrowIcon, Button, CopyPad, Flex, OptionButton, Text, TonIcon } from 'src/uikit';
+import {
+    A,
+    ArrowIcon,
+    Button,
+    CopyPad,
+    Flex,
+    OptionButton,
+    Text,
+    TonIcon,
+    Translation
+} from 'src/uikit';
 import { generateTonhubPaymentLink, generateTonkeeperPaymentLink } from 'src/utils/ton-payment';
 import { currentInvoice, tonConnectUI, wallet } from 'src/state';
 import { fromNano, sliceAddress } from 'src/utils';
@@ -34,16 +44,24 @@ export const PaymentMethodsList: Component<PaymentMethodsListProps> = props => {
             >
                 <Flex alignItems="center" gap="6px">
                     <ArrowIcon direction="left" color="primary" />
-                    Back
+                    <Translation translationKey="common.back">Back</Translation>
                 </Flex>
             </Button>
-            <Text color="secondary" class="mb-2">
-                To perform payment you need to send {fromNano(currentInvoice()!.tonAmount)} TON
-                on&nbsp;address bellow.&nbsp;
+            <div class="mb-2">
+                <Text
+                    color="secondary"
+                    class="inline"
+                    translationKey="payment.toPerformPayment"
+                    translationValues={{ amount: fromNano(currentInvoice()!.tonAmount).toString() }}
+                >
+                    To perform payment you need to send {fromNano(currentInvoice()!.tonAmount)} TON
+                    on&nbsp;address bellow.
+                </Text>
+                &nbsp;
                 <A href={LINKS.PAY_VIA_ADDRESS_DOCS} target="_blank">
-                    How to pay
+                    <Translation translationKey="common.howToPay">How to pay</Translation>
                 </A>
-            </Text>
+            </div>
             <CopyPad text={currentInvoice()!.sendToAddress} class="mb-3" />
             <ul class="mb-2">
                 <Show when={wallet()}>

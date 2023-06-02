@@ -6,7 +6,12 @@ export const PaidInvoice: Component = () => {
     return (
         <Flex flexDirection="column" alignItems="center">
             <SuccessIcon class="mb-2" />
-            <PaidInvoiceTextStyled textStyle="label2">Successful payment!</PaidInvoiceTextStyled>
+            <PaidInvoiceTextStyled
+                textStyle="label2"
+                translationKey="invoiceCard.invoiceSuccessful"
+            >
+                Successful payment!
+            </PaidInvoiceTextStyled>
         </Flex>
     );
 };

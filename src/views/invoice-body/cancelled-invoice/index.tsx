@@ -1,6 +1,10 @@
 import { Component } from 'solid-js';
-import { Callout } from 'src/uikit';
+import { Callout, Translation } from 'src/uikit';
 
 export const CancelledInvoice: Component = () => (
-    <Callout class="mb-4">This invoice has been canceled.</Callout>
+    <Callout class="mb-4">
+        <Translation translationKey="invoiceCard.invoiceCancelled">
+            This invoice has been canceled.
+        </Translation>
+    </Callout>
 );

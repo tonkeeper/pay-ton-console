@@ -10,6 +10,8 @@ export enum DTOInvoicesInvoiceStatus {
 export interface DTOInvoice {
     id: string;
     app_id: number;
+
+    app_name: string;
     amount: number;
     life_time: number;
     subtract_fee_from_amount: boolean;

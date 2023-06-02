@@ -8,10 +8,18 @@ export const InvoiceNotFound: Component = () => {
     return (
         <InvoiceNotFoundStyled>
             <TextContainerStyled>
-                <Text textStyle="label1" class="mb-2">
+                <Text
+                    textStyle="label1"
+                    class="mb-2"
+                    translationKey="invoiceCard.invoiceNotFoundHeader"
+                >
                     Invoice not found
                 </Text>
-                <Text textStyle="body2" color="secondary">
+                <Text
+                    textStyle="body2"
+                    color="secondary"
+                    translationKey="invoiceCard.invoiceNotFoundDescription"
+                >
                     The invoice you are looking for was either removed or doesn’t exist.
                 </Text>
             </TextContainerStyled>
@@ -20,7 +28,9 @@ export const InvoiceNotFound: Component = () => {
                 <Button appearance="flat">
                     <Flex gap="8px">
                         <TelegramIcon />
-                        <Text color="secondary">Support</Text>
+                        <Text color="secondary" translationKey="common.support">
+                            Support
+                        </Text>
                     </Flex>
                 </Button>
             </SupportButtonStyled>

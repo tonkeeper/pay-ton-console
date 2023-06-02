@@ -10,6 +10,8 @@ export type InvoiceStatus = keyof typeof InvoiceStatus;
 
 export interface InvoiceCommon {
     id: string;
+
+    appName: string;
     tonAmount: string;
     validUntil: Date;
     subtractFeeFromAmount: boolean;

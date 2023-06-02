@@ -1,5 +1,5 @@
 import { Component } from 'solid-js';
-import { ArrowIcon, Button, CopyButton, Flex, Text, TonIcon } from 'src/uikit';
+import { ArrowIcon, Button, CopyButton, Flex, Text, TonIcon, Translation } from 'src/uikit';
 import {
     ChangeWalletButtonStyled,
     WalletImageStyled,
@@ -34,7 +34,7 @@ export const TonConnectPaymentMethod: Component<TonConnectPaymentMethodProps> = 
             >
                 <Flex alignItems="center" gap="6px">
                     <ArrowIcon direction="left" color="primary" />
-                    Back
+                    <Translation translationKey="common.back">Back</Translation>
                 </Flex>
             </Button>
             <WalletInfoStyled>
@@ -52,11 +52,13 @@ export const TonConnectPaymentMethod: Component<TonConnectPaymentMethodProps> = 
             <Button class="mb-3" onClick={payWithTonConnect}>
                 <Flex gap="6px" justifyContent="center" alignItems="center">
                     <TonIcon color="contrast" />
-                    Pay
+                    <Translation translationKey="payment.pay">Pay</Translation>
                 </Flex>
             </Button>
             <ChangeWalletButtonStyled appearance="secondary" onClick={onDisconnectClick}>
-                Change connected wallet
+                <Translation translationKey="payment.changeWallet">
+                    Change connected wallet
+                </Translation>
             </ChangeWalletButtonStyled>
         </>
     );

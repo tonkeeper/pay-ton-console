@@ -1,5 +1,5 @@
 import { Component, Show } from 'solid-js';
-import { A, Button, CreditCardIcon, QrCode, Text, TonIcon } from 'src/uikit';
+import { A, Button, CreditCardIcon, QrCode, Text, TonIcon, Translation } from 'src/uikit';
 import { generatePaymentLink } from 'src/utils/ton-payment';
 import { currentInvoice, payWithTonConnect, wallet } from 'src/state';
 import { LINKS } from 'src/constants';
@@ -30,14 +30,21 @@ export const DefaultPaymentMethod: Component<DefaultPaymentMethodProps> = props 
 
     return (
         <>
-            <Text color="secondary">Scan the code below with a camera in your TON wallet.</Text>
-            <A href={LINKS.PAY_VIA_QR_DOCS} target="_blank" class="mb-3 block">
-                How to pay
-            </A>
+            <div class="mb-3 block">
+                <Text color="secondary" translationKey="payment.scanQR" class="inline">
+                    Scan the code below with a camera in your TON wallet.
+                </Text>
+                &nbsp;
+                <A href={LINKS.PAY_VIA_QR_DOCS} target="_blank">
+                    <Translation translationKey="common.howToPay">How to pay</Translation>
+                </A>
+            </div>
             <QrCode src={paymentLink()} class="mb-3" />
 
             <A href={paymentLink()}>
-                <Button>Pay</Button>
+                <Button>
+                    <Translation translationKey="payment.pay">Pay</Translation>
+                </Button>
             </A>
             <Show when={wallet()}>
                 <TonConnectButtonStyled onClick={payWithTonConnect}>
@@ -57,7 +64,7 @@ export const DefaultPaymentMethod: Component<DefaultPaymentMethodProps> = props 
             </Show>
             <AllMethodsButtonStyled appearance="flat" onClick={props.onShowMethodsClick}>
                 <CreditCardIcon />
-                All payment methods
+                <Translation translationKey="payment.allMethods">All payment methods</Translation>
             </AllMethodsButtonStyled>
         </>
     );

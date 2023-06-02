@@ -35,7 +35,9 @@ export const InvoiceCard: Component = () => {
     return (
         <InvoiceCardStyled>
             <HeaderStyled>
-                <H4 class="mb-0">Invoice</H4>
+                <H4 class="mb-0" translationKey="invoiceCard.invoice">
+                    Invoice
+                </H4>
                 <Show when={secondsLeft() > 0 && secondsLeft() < 20 * 60}>
                     <TimerContainerStyled>
                         <FlashIcon />
@@ -45,7 +47,7 @@ export const InvoiceCard: Component = () => {
                     </TimerContainerStyled>
                 </Show>
             </HeaderStyled>
-            <AppNameStyled color="secondary">Netflix</AppNameStyled>
+            <AppNameStyled color="secondary">{currentInvoice()!.appName}</AppNameStyled>
             <Divider class="mb-4" coverPadding="24px" />
             <AmountAndDescriptionContainerStyled>
                 <Show when={currentInvoice()!.description}>
@@ -68,7 +70,7 @@ export const InvoiceCard: Component = () => {
                 <Button appearance="flat">
                     <Flex gap="8px">
                         <TelegramIcon />
-                        <Text color="secondary">Support</Text>
+                        <Text color="secondary" translationKey="common.support">Support</Text>
                     </Flex>
                 </Button>
             </SupportButtonStyled>

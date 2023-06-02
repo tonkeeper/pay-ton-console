@@ -37,6 +37,7 @@ const mapInvoiceDTOStatusToInvoiceStatus: Record<DTOInvoice['status'], InvoiceSt
 function mapInvoiceDTOToInvoice(invoiceDTO: DTOInvoice): Invoice {
     const creationDate = new Date(invoiceDTO.date_create);
     const commonInvoice: InvoiceCommon = {
+        appName: invoiceDTO.app_name,
         tonAmount: String(invoiceDTO.amount),
         creationDate,
         subtractFeeFromAmount: invoiceDTO.subtract_fee_from_amount,

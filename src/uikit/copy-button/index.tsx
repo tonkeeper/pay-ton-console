@@ -4,6 +4,7 @@ import { CopiedBadgeStyled, CopyButtonStyled } from './style';
 import { Transition } from 'solid-transition-group';
 import { createCopyToClipboard } from 'src/hooks';
 import { Styleable } from 'src/models';
+import { Translation } from '../typography';
 
 interface CopyButtonProps extends Styleable {
     text: string;
@@ -46,7 +47,9 @@ export const CopyButton: Component<CopyButtonProps> = props => {
                 }}
             >
                 <Show when={copied()}>
-                    <CopiedBadgeStyled>Copied!</CopiedBadgeStyled>
+                    <CopiedBadgeStyled>
+                        <Translation translationKey="common.copied">Copied!</Translation>
+                    </CopiedBadgeStyled>
                 </Show>
             </Transition>
         </CopyButtonStyled>

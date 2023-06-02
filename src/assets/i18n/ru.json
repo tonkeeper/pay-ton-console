@@ -1,3 +1,23 @@
 {
-
+  "common": {
+    "copied": "Скопировано!",
+    "howToPay": "Как оплатить",
+    "support": "Поддержка",
+    "back": "Назад"
+  },
+  "invoiceCard": {
+    "invoice": "Счет",
+    "invoiceExpired": "Время жизни счета истекло. Пожалуйста, повторите заказ.",
+    "invoiceCancelled": "Выставленный счет был отменен.",
+    "invoiceSuccessful": "Счет успешно оплачен",
+    "invoiceNotFoundHeader": "Счет не найден",
+    "invoiceNotFoundDescription": "Счет, который вы ищете, был удален или не существует."
+  },
+  "payment": {
+    "scanQR": "Отсканируйте QR-код камерой в приложении вашего TON кошелька.",
+    "pay": "Оплатить",
+    "allMethods": "Прочие способы оплаты",
+    "toPerformPayment": "Отправьте {{ amount }} TON на адрес ниже, чтобы оплатить.",
+    "changeWallet": "Поменять подключенный кошелек"
+  }
 }

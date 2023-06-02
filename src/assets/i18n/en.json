@@ -1,3 +1,23 @@
 {
-
+  "common": {
+    "copied": "Copied!",
+    "howToPay": "How to pay",
+    "support": "Support",
+    "back": "Back"
+  },
+  "invoiceCard": {
+    "invoice": "Invoice",
+    "invoiceExpired": "The time for payment has expired, repeat the order.",
+    "invoiceCancelled": "This invoice has been canceled.",
+    "invoiceSuccessful": "Payment success",
+    "invoiceNotFoundHeader": "Invoice not found",
+    "invoiceNotFoundDescription": "The invoice you are looking for was either removed or doesn’t exist."
+  },
+  "payment": {
+    "scanQR": "Scan the code below with a camera in your TON wallet.",
+    "pay": "Pay",
+    "allMethods": "All payment methods",
+    "toPerformPayment": "To perform payment you need to send {{ amount }} TON on address bellow",
+    "changeWallet": "Change connected wallet"
+  }
 }

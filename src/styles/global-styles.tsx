@@ -143,6 +143,10 @@ export const GlobalStyles = (): JSXElement => {
     .block {
         display: block;
     }
+    
+    .inline {
+        display: inline;
+    }
 `;
     return <Styles />;
 };
