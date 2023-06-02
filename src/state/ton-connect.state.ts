@@ -5,7 +5,7 @@ import { currentInvoice } from 'src/state/invoices/invoice.state';
 export const [wallet, setWallet] = createSignal<ConnectedWallet | null>(null);
 
 export const tonConnectUI = new TonConnectUI({
-    manifestUrl: 'https://ton-connect.github.io/demo-dapp-with-react-ui/tonconnect-manifest.json', // TODO
+    manifestUrl: 'https://pay.tonconsole.com/tonconnect-manifest.json',
     uiPreferences: {
         theme: THEME.LIGHT
     }
