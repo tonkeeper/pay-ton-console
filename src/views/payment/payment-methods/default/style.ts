@@ -23,9 +23,17 @@ export const TonConnectButtonStyled = styled(Button)`
 export const AllMethodsButtonStyled = styled(Button)`
     display: flex;
     align-items: center;
-    width: fit-content;
+    justify-content: center;
     margin: 18px auto;
     gap: 10px;
+    text-align: center;
+    padding: 12px 16px;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: ${props => props.theme!.colors.button.secondary.background};
+    }
 `;
 
 export const ButtonDividerStyled = styled.div`

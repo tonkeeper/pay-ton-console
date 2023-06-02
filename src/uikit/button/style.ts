@@ -30,17 +30,17 @@ export const ButtonStyled = styled.button<{
     width: ${props => props.width};
     ${mediaNotTouch} {
         &:hover {
-            transform: ${props => (props.disabled ? 'unset' : `scale(1.03)`)};
+            transform: ${props => (props.disabled ? 'unset' : 'scale(1.03)')};
         }
     }
 
     &:active {
-        transform: ${props => (props.disabled ? 'unset' : `scale(0.97)`)};
+        transform: ${props => (props.disabled ? 'unset' : 'scale(0.97)')};
     }
 
     ${mediaTouch} {
         &:active {
-            transform: ${props => (props.disabled ? 'unset' : `scale(0.94)`)};
+            transform: ${props => (props.disabled ? 'unset' : 'scale(0.94)')};
         }
     }
 `;

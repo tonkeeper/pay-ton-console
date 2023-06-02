@@ -59,11 +59,10 @@ export const TimerContainerStyled = styled.div`
 `;
 
 export const AppNameStyled = styled(Text)`
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 
     ${media('mobile')} {
         text-align: center;
-        margin-bottom: 16px;
     }
 `;
 
@@ -75,6 +74,7 @@ export const AmountAndDescriptionContainerStyled = styled.div`
 
     ${media('mobile')} {
         flex-direction: column-reverse;
+        gap: 4px;
         margin-bottom: 16px;
     }
 `;

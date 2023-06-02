@@ -41,7 +41,7 @@ export const CopiedBadgeStyled = styled.div`
     bottom: 4px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 4px;
+    padding: 4px 6px;
     background-color: ${props => props.theme!.colors.background.content};
     border-radius: ${borderRadius.md};
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);

@@ -5,11 +5,11 @@ import { LINKS } from 'src/constants';
 
 export const Footer: Component = () => {
     return (
-        <Flex justifyContent="space-between" class="mb-1">
+        <Flex justifyContent="space-between">
             <LanguageSelect />
             <SupportButtonStyled asButton={true} href={LINKS.SUPPORT} target="_blank">
                 <Button appearance="flat">
-                    <Flex gap="8px">
+                    <Flex gap="8px" alignItems="center">
                         <TelegramIcon />
                         <Text textStyle="label2" color="secondary" translationKey="common.support">
                             Support

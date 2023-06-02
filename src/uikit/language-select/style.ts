@@ -4,6 +4,26 @@ import { LocaleIcon } from 'src/uikit';
 
 export const LanguageSelectContainerStyled = styled.div`
     position: relative;
+
+    * {
+        transition: color 0.2s ease-in-out;
+    }
+
+    path {
+        transition: fill 0.2s ease-in-out;
+    }
+
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        * {
+            color: ${props => props.theme!.colors.text.primary};
+        }
+
+        path {
+            fill: ${props => props.theme!.colors.icon.primary};
+        }
+    }
 `;
 
 export const LanguageSelectIconStyled = styled(LocaleIcon)`

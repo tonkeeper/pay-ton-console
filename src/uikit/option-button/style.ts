@@ -1,5 +1,5 @@
 import { styled } from 'solid-styled-components';
-import { textStyles } from 'src/styles';
+import { mediaNotTouch, mediaTouch, textStyles } from 'src/styles';
 import { toPx } from 'src/utils';
 
 export const OptionButtonStyled = styled.button<{ coverPadding?: number }>`
@@ -28,12 +28,23 @@ export const OptionButtonStyled = styled.button<{ coverPadding?: number }>`
         transition: transform 0.2s ease-in-out;
     }
 
-    &:hover {
+    ${mediaNotTouch} {
+        &:hover {
+            background-color: ${props => props.theme!.colors.background.contentTint};
+            .option-btn-arrow {
+                transform: translateX(4px);
+            }
+        }
+    }
+
+    &:active {
         background-color: ${props => props.theme!.colors.background.contentTint};
         .option-btn-arrow {
             transform: translateX(4px);
         }
     }
+
+    ${mediaTouch}
 `;
 
 export const TextWrapperStyled = styled.div`

@@ -14,7 +14,7 @@
     "invoiceNotFoundDescription": "The invoice you are looking for was either removed or doesn’t exist."
   },
   "payment": {
-    "scanQR": "Scan the code below with a camera in your TON wallet.",
+    "scanQR": "Scan the QR code below with your TON crypto wallet's camera",
     "pay": "Pay",
     "allMethods": "All payment methods",
     "toPerformPayment": "To perform payment you need to send {{ amount }} TON on address bellow",
