@@ -24,7 +24,7 @@ export const QrCode: Component<QrCodeProps> = props => {
     return (
         <QrCodeStyled class={props.class}>
             <Show when={props.showCopyButton !== false}>
-                <CopyButtonStyled text={props.src} />
+                <CopyButtonStyled position="bottom-left" text={props.src} />
             </Show>
             <div ref={qrCodeCanvasRef} />
         </QrCodeStyled>

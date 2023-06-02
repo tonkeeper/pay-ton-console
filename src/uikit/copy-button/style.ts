@@ -1,16 +1,16 @@
 import { styled } from 'solid-styled-components';
 import { borderRadius } from 'src/styles';
-import { Button } from 'src/uikit';
 
-export const CopyButtonStyled = styled(Button)`
+export const CopyButtonContainer = styled.div`
+    width: fit-content;
     position: relative;
 `;
 
-export const CopiedBadgeStyled = styled.div`
+export const CopiedBadgeStyled = styled.div<{ position: 'bottom' | 'bottom-left' }>`
     position: absolute;
     bottom: -24px;
-    left: 50%;
-    transform: translateX(-50%);
+    ${props => (props.position === 'bottom' ? 'left: 50%' : 'right: 0')};
+    transform: ${props => (props.position === 'bottom' ? 'translateX(-50%)' : 'unset')};
     padding: 4px;
     background-color: ${props => props.theme!.colors.background.content};
     border-radius: ${borderRadius.md};
