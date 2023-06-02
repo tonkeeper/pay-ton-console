@@ -1,12 +1,12 @@
 import type { Component } from 'solid-js';
 import { ThemeProvider } from 'solid-styled-components';
 import { i18nDictionary } from './i18n';
-import { themeState, currentInvoice, locale } from 'src/state';
+import { themeState, currentInvoice, locale, connectionRestored } from 'src/state';
 import { GlobalStyles } from 'src/styles';
 import './styles/style.d.ts';
 import { createI18nContext, I18nContext } from '@solid-primitives/i18n';
 import { fixMobileSafariActiveTransition } from 'src/utils';
-import { InvoiceCard, PageOverlay, InvoiceNotFound } from 'src/views';
+import { InvoiceCard, PageOverlay, InvoiceNotFound, AppLoading } from 'src/views';
 import { Match, Switch } from 'solid-js';
 
 const App: Component = () => {
@@ -20,6 +20,9 @@ const App: Component = () => {
             <ThemeProvider theme={themeState}>
                 <PageOverlay>
                     <Switch>
+                        <Match when={currentInvoice.state === 'pending' || !connectionRestored()}>
+                            <AppLoading />
+                        </Match>
                         <Match when={!currentInvoice()}>
                             <InvoiceNotFound />
                         </Match>

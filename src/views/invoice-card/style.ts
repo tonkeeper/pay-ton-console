@@ -1,6 +1,6 @@
 import { styled } from 'solid-styled-components';
 import { borderRadius, media } from 'src/styles';
-import { A, Text } from 'src/uikit';
+import { Text } from 'src/uikit';
 
 export const InvoiceCardStyled = styled.div`
     background-color: ${props => props.theme!.colors.background.content};

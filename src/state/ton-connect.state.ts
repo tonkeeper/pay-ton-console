@@ -3,6 +3,7 @@ import { createSignal } from 'solid-js';
 import { currentInvoice } from 'src/state/invoices/invoice.state';
 
 export const [wallet, setWallet] = createSignal<ConnectedWallet | null>(null);
+export const [connectionRestored, setConnectionRestored] = createSignal(false);
 
 export const tonConnectUI = new TonConnectUI({
     manifestUrl: 'https://pay.tonconsole.com/tonconnect-manifest.json',
@@ -12,6 +13,7 @@ export const tonConnectUI = new TonConnectUI({
 });
 
 tonConnectUI.onStatusChange(setWallet);
+tonConnectUI.connectionRestored.then(() => setConnectionRestored(true));
 
 export async function payWithTonConnect(): Promise<void> {
     await tonConnectUI.sendTransaction(
