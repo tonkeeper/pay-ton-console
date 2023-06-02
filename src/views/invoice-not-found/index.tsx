@@ -1,5 +1,10 @@
 import { Component } from 'solid-js';
-import { InvoiceNotFoundStyled, SupportButtonStyled, TextContainerStyled } from './style';
+import {
+    InvoiceNotFoundStyled,
+    NotFoundIconStyled,
+    SupportButtonStyled,
+    TextContainerStyled
+} from './style';
 import { Button, Divider, Flex, Text } from 'src/uikit';
 import { TelegramIcon } from 'src/uikit/icons';
 import { LINKS } from 'src/constants';
@@ -7,6 +12,7 @@ import { LINKS } from 'src/constants';
 export const InvoiceNotFound: Component = () => {
     return (
         <InvoiceNotFoundStyled>
+            <NotFoundIconStyled />
             <TextContainerStyled>
                 <Text
                     textStyle="label1"
