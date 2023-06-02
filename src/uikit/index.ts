@@ -9,3 +9,4 @@ export { OptionButton } from './option-button';
 export { CopyPad } from './copy-pad';
 export { Callout } from './callout';
 export { CopyButton } from './copy-button';
+export { LanguageSelect } from './language-select';

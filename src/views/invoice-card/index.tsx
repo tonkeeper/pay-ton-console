@@ -6,18 +6,16 @@ import {
     HeaderStyled,
     InvoiceCardStyled,
     PriceContainerStyled,
-    SupportButtonStyled,
     TimerContainerStyled
 } from './style';
-import { Button, Divider, FlashIcon, Flex, H3, H4, Text } from 'src/uikit';
-import { TelegramIcon } from 'src/uikit/icons';
+import { Divider, FlashIcon, H3, H4, Text } from 'src/uikit';
 import { currentInvoice, tonPrice, toUsd } from 'src/state';
 import { fromNano, secondsToMMSS } from 'src/utils';
-import { LINKS } from 'src/constants';
 import { createCountdown } from 'src/hooks';
 import { InvoiceBody } from '../invoice-body';
 import { isDevice } from 'src/styles';
 import { Dynamic } from 'solid-js/web';
+import { Footer } from 'src/views/footer';
 
 export const InvoiceCard: Component = () => {
     const initialSecondsLeft = (): number => {
@@ -66,14 +64,7 @@ export const InvoiceCard: Component = () => {
             <Divider class="mb-4" coverPadding="24px" />
             <InvoiceBody />
             <Divider coverPadding="24px" class="mb-4" />
-            <SupportButtonStyled asButton={true} href={LINKS.SUPPORT} target="_blank">
-                <Button appearance="flat">
-                    <Flex gap="8px">
-                        <TelegramIcon />
-                        <Text color="secondary" translationKey="common.support">Support</Text>
-                    </Flex>
-                </Button>
-            </SupportButtonStyled>
+            <Footer />
         </InvoiceCardStyled>
     );
 };

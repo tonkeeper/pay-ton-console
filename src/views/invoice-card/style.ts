@@ -10,12 +10,6 @@ export const InvoiceCardStyled = styled.div`
     padding: 16px 24px;
 `;
 
-export const SupportButtonStyled = styled(A)`
-    display: block;
-    margin: 0 auto 4px;
-    width: fit-content;
-`;
-
 export const DescriptionTextStyled = styled(Text)`
     max-height: 40px;
     overflow: hidden;

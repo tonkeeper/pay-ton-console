@@ -8,3 +8,4 @@ export { CreditCardIcon } from './credit-card-icon';
 export { FlashIcon } from './flash-icon';
 export { SuccessIcon } from './success-icon';
 export { NotFoundIcon } from './not-found-icon';
+export { LocaleIcon } from './locale-icon';

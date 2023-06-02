@@ -1,13 +1,7 @@
 import { Component } from 'solid-js';
-import {
-    InvoiceNotFoundStyled,
-    NotFoundIconStyled,
-    SupportButtonStyled,
-    TextContainerStyled
-} from './style';
-import { Button, Divider, Flex, Text } from 'src/uikit';
-import { TelegramIcon } from 'src/uikit/icons';
-import { LINKS } from 'src/constants';
+import { InvoiceNotFoundStyled, NotFoundIconStyled, TextContainerStyled } from './style';
+import { Divider, Text } from 'src/uikit';
+import { Footer } from 'src/views/footer';
 
 export const InvoiceNotFound: Component = () => {
     return (
@@ -30,16 +24,7 @@ export const InvoiceNotFound: Component = () => {
                 </Text>
             </TextContainerStyled>
             <Divider coverPadding="24px" class="mb-4" />
-            <SupportButtonStyled asButton={true} href={LINKS.SUPPORT} target="_blank">
-                <Button appearance="flat">
-                    <Flex gap="8px">
-                        <TelegramIcon />
-                        <Text color="secondary" translationKey="common.support">
-                            Support
-                        </Text>
-                    </Flex>
-                </Button>
-            </SupportButtonStyled>
+            <Footer />
         </InvoiceNotFoundStyled>
     );
 };

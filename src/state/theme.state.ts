@@ -4,7 +4,7 @@ import { THEME, colors } from 'src/styles';
 import { getLocalStorage, getSystemTheme } from 'src/utils';
 import { createEffect } from 'solid-js';
 
-const themeStoreKey = 'console-pay::preferred-lang';
+const themeStoreKey = 'console-pay::preferred-theme';
 
 export const [themeState, setThemeState] = createStore<DefaultTheme>({
     theme: getInitialTheme(),
