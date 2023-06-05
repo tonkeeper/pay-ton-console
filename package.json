@@ -2,7 +2,8 @@
   "name": "pay-ton-console",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build"
+    "build": "vite build",
+    "build:staging": "tsc && vite build --mode staging"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.12",
