@@ -1,12 +1,18 @@
 import { createEffect, createSignal } from 'solid-js';
 import { Locales, supportedLocales } from 'src/models';
 import { getLocalStorage, getUserLocale, getWindow } from 'src/utils';
+import { tonConnectUI } from './ton-connect.state';
 
 const i18StoreKey = 'console-pay::preferred-lang';
 
 export const [locale, setLocale] = createSignal<Locales>(getInitialLocale());
 
 createEffect(() => getLocalStorage()?.setItem(i18StoreKey, locale()));
+createEffect(() => {
+    tonConnectUI.uiOptions = {
+        language: locale()
+    };
+});
 
 function getInitialLocale(): Locales {
     const urlParams = new URLSearchParams(getWindow()?.location.search);
